@@ -1,0 +1,270 @@
+1.	void	*mlx_new_image(void *mlx_ptr,int width,int height);
+
+Bu fonksiyon, belirtilen genişlik ve yükseklik değerleriyle yeni bir görüntü (image) oluşturmak için kullanılır.
+
+Parametreler:
+
+mlx_ptr: mlx_new_image fonksiyonunun çağrıldığı pencereye ait mlx_ptr göstericisi
+width: Oluşturulacak görüntünün genişliği
+height: Oluşturulacak görüntünün yüksekliği
+Fonksiyon geri dönüş değeri, oluşturulan görüntü için bir işaretçidir.
+Bu işaretçi, daha sonra görüntü üzerinde çizim yapmak, görüntüyü değiştirmek veya görüntüyü ekranda
+görüntülemek gibi işlemler için kullanılabilir.
+
+Örneğin, kullanıcının bir oyun geliştirirken oyun alanını temsil eden bir görüntü oluşturmak istediğini varsayalım.
+Bu fonksiyon kullanılarak oluşturulan görüntü daha sonra, oyun alanının çizimleri için kullanılabilir.
+
+
+
+2.	char	*mlx_get_data_addr(void *img_ptr, int *bits_per_pixel, int *size_line, int *endian);
+
+Bu fonksiyon, oluşturulmuş bir görüntünün (image) özelliklerini almak için kullanılır ve görüntünün bellekteki konumunu işaret eden bir işaretçi döndürür.
+
+Parametreler:
+
+img_ptr: özelliklerinin alınacağı görüntüye ait img_ptr işaretçisi.
+bits_per_pixel: Görüntüdeki her piksel için kullanılan bit sayısını içeren bir tamsayı işaretçisi.
+Bu değer, görüntünün renk yoğunluğunu belirler.
+size_line: Görüntünün bellekteki satır boyutunu içeren bir tamsayı işaretçisi.
+Bu değer, görüntünün her satırının bellekteki yerleşimini belirler.
+endian: Görüntünün bellekteki sıralamasını (endianness) belirleyen bir tamsayı işaretçisi.
+0, little-endian olarak tanımlanır ve 1, big-endian olarak tanımlanır.
+Fonksiyon geri dönüş değeri, görüntünün bellekteki konumunu işaret eden bir karakter işaretçisidir.
+Bu işaretçi, görüntünün her pikselini içeren bellek bloğunun ilk byte'ının adresini işaret eder.
+
+Bu fonksiyon, özellikle bir grafik kütüphanesi kullanarak oluşturulan bir görüntünün bellek üzerindekikonumunu elde etmek
+ve bu görüntüyü değiştirmek için kullanılır. Örneğin, bir oyun geliştiricisi, bu fonksiyonu kullanarak
+oyun alanındaki nesnelerin konumlarını güncelleyebilir veya oyun durumuna göre renkleri değiştirebilir.
+
+
+
+
+3.	void	*mlx_init();
+
+Bu fonksiyon, bir grafik kütüphanesi olan MiniLibX'in başlatılması için kullanılır.
+MiniLibX, çeşitli platformlarda (Unix, MacOS) grafik uygulamaları geliştirmek için kullanılabilen bir kütüphanedir.
+
+Fonksiyon geri dönüş değeri, başarıyla başlatılan MiniLibX için bir işaretçidir. Bu işaretçi daha sonra,
+MiniLibX'in diğer fonksiyonlarını çağırmak için kullanılabilir.
+
+Örneğin, bir oyun geliştiricisi, grafiklerin görüntüleneceği bir pencere oluşturmak için mlx_init fonksiyonunu kullanabilir.
+Daha sonra, oluşturulan pencere üzerinde nesneleri çizmek, kullanıcının
+girdilerini takip etmek ve diğer işlemleri gerçekleştirmek için MiniLibX'in diğer fonksiyonlarını çağırabilir.
+
+
+
+4.	void	*mlx_new_window(void *mlx_ptr, int size_x, int size_y, char *title);
+
+Bu fonksiyon, MiniLibX kütüphanesi kullanılarak bir pencere (window) oluşturmak için kullanılır.
+
+Parametreler:
+
+mlx_ptr: mlx_new_window fonksiyonunun çağrıldığı pencereye ait mlx_ptr işaretçisi
+size_x: Oluşturulacak pencerenin genişliği
+size_y: Oluşturulacak pencerenin yüksekliği
+title: Oluşturulacak pencerenin başlığı (title bar)
+Fonksiyon geri dönüş değeri, başarıyla oluşturulan pencere için bir işaretçidir.
+Bu işaretçi daha sonra, pencere üzerindeki işlemler için kullanılabilir.
+
+Örneğin, bir oyun geliştiricisi, oyunun grafiklerini görüntülemek için bir pencere oluşturmak için
+mlx_new_window fonksiyonunu kullanabilir. Daha sonra, bu pencere üzerinde nesneleri çizmek, kullanıcının
+girdilerini takip etmek ve diğer işlemleri gerçekleştirmek için MiniLibX'in diğer fonksiyonlarını çağırabilir.
+
+
+
+
+5.	int		mlx_clear_window(void *mlx_ptr, void *win_ptr);
+
+Bu fonksiyon, bir pencereye (window) ait içeriği temizlemek için kullanılır. Pencerenin içeriği silinir ve pencere boş bir şekilde yeniden çizilir.
+
+Parametreler:
+
+mlx_ptr: mlx_clear_window fonksiyonunun çağrıldığı pencereye ait mlx_ptr işaretçisi.
+win_ptr: İçeriği temizlenecek pencereye ait win_ptr işaretçisi.
+Fonksiyon geri dönüş değeri, herhangi bir değer döndürmez.
+
+Örneğin, bir oyun geliştiricisi, oyun alanındaki nesnelerin konumlarını güncellediğinde,
+önce mlx_clear_window fonksiyonunu çağırarak oyun alanını temizleyebilir.
+Daha sonra, güncellenen nesneleri yeniden çizmek için MiniLibX'in diğer fonksiyonlarını kullanabilir.
+Bu şekilde, oyun alanı sürekli olarak yenilenir ve güncellenir.
+
+
+6. int	mlx_put_image_to_window(void *mlx_ptr, void *win_ptr, void *img_ptr, int x, int y);
+
+Bu fonksiyon, MiniLibX kütüphanesi kullanılarak oluşturulmuş bir görüntüyü (image)
+belirli bir pencereye (window) çizmek için kullanılır.
+
+Parametreler:
+
+mlx_ptr: mlx_put_image_to_window fonksiyonunun çağrıldığı pencereye ait mlx_ptr işaretçisi
+win_ptr: Görüntünün çizileceği pencereye ait win_ptr işaretçisi
+img_ptr: Çizilecek olan görüntüye ait img_ptr işaretçisi
+x: Görüntünün çizileceği konumun x koordinatı
+y: Görüntünün çizileceği konumun y koordinatı
+Fonksiyon geri dönüş değeri, herhangi bir değer döndürmez.
+
+Örneğin, bir oyun geliştiricisi, bir oyun karakterinin hareketi sırasında karakterin görüntüsünü (sprite)
+yeniden çizmek için mlx_put_image_to_window fonksiyonunu kullanabilir.
+Bu şekilde, karakter hareket ettiğinde, görüntü de eşlik eder ve oyun oynanışı daha gerçekçi hale gelir.
+
+7.  unsigned int	mlx_get_color_value(void *mlx_ptr, int color);
+
+Bu fonksiyon, MiniLibX kütüphanesi kullanılarak belirlenmiş bir renk değerini, piksel değerine (pixel value)
+dönüştürmek için kullanılır.
+
+Parametreler:
+
+mlx_ptr: mlx_get_color_value fonksiyonunun çağrıldığı pencereye ait mlx_ptr işaretçisi.
+color: Dönüştürülecek olan renk değeri.
+Fonksiyon geri dönüş değeri, piksel değeri olarak temsil edilen renk değeridir.
+
+Örneğin, bir oyun geliştiricisi, oyun karakterinin görüntüsünü oluşturmak için farklı renkler kullanabilir.
+Ancak, MiniLibX kütüphanesi için piksel değerleri gerektiğinden, bu renklerin piksel değerlerine dönüştürülmesi gerekebilir.
+mlx_get_color_value fonksiyonu, renk değerlerini piksel değerlerine dönüştürmek için kullanılabilir.
+Bu şekilde, oyun karakterinin görüntüsü belirtilen pencereye çizilebilir.
+
+
+8. int	mlx_mouse_hook (void *win_ptr, int (*funct_ptr)(), void *param);
+
+Bu fonksiyon, fare olaylarını takip etmek için kullanılır. Bir fare olayı meydana geldiğinde, belirtilen işlevin (function) çağrılmasını sağlar. Bu fonksiyon, MiniLibX kütüphanesi ile oluşturulmuş bir pencereye (window) bağlıdır.
+
+Parametreler:
+
+win_ptr: mlx_mouse_hook fonksiyonunun çağrıldığı pencereye ait win_ptr işaretçisi.
+funct_ptr: Bir fare olayı meydana geldiğinde çağrılacak işlevin işaretçisi.
+Bu işlev, üç tamsayı (integer) parametre alır: fare tuşu (mouse button), fare konumu x koordinatı ve fare konumu y koordinatı.
+param: İşlevin kullanacağı ekstra parametrelerin işaretçisi.
+Fonksiyon geri dönüş değeri, herhangi bir değer döndürmez.
+
+Örneğin, bir oyun geliştiricisi, fare tıklamalarını takip etmek için mlx_mouse_hook fonksiyonunu kullanabilir.
+Bu sayede, oyuncunun fare tıklamalarına yanıt veren oyun mekanikleri oluşturabilir.
+Örneğin, fare tıklamasına göre oyun karakterinin hareket
+ettirilmesi veya bir atış yapılması gibi oyun oynanışına etkili işlemler gerçekleştirebilir.
+
+9. int	mlx_key_hook (void *win_ptr, int (*funct_ptr)(), void *param);
+
+Bu fonksiyon, MiniLibX kütüphanesi ile oluşturulmuş bir pencereye (window) klavye olaylarını takip etmek için kullanılır. Bir klavye olayı meydana geldiğinde, belirtilen işlevin (function) çağrılmasını sağlar.
+
+Parametreler:
+
+win_ptr: mlx_key_hook fonksiyonunun çağrıldığı pencereye ait win_ptr işaretçisi.
+funct_ptr: Bir klavye olayı meydana geldiğinde çağrılacak işlevin işaretçisi. Bu işlev, iki tamsayı (integer)
+ve bir işaretçi (pointer) parametre alır: tuş kodu (key code), klavyeden okunan karakter ve ekstra parametrelerin işaretçisi.
+param: İşlevin kullanacağı ekstra parametrelerin işaretçisi.
+Fonksiyon geri dönüş değeri, herhangi bir değer döndürmez.
+
+Örneğin, bir oyun geliştiricisi, klavye girdilerini takip etmek için mlx_key_hook fonksiyonunu kullanabilir.
+Bu sayede, oyuncunun klavye tuşlarına yanıt veren oyun mekanikleri oluşturabilir. Örneğin, klavye tuşlarına
+göre oyun karakterinin hareket ettirilmesi veya bir atış yapılmasıgibi oyun oynanışına etkili işlemler gerçekleştirebilir.
+
+
+10. int	mlx_expose_hook (void *win_ptr, int (*funct_ptr)(), void *param);
+
+Bu fonksiyon, bir pencere (window) yeniden boyutlandırıldığında veya açıldığında (expose event)
+belirtilen işlevin (function) çağrılmasını sağlar.
+
+Parametreler:
+
+win_ptr: mlx_expose_hook fonksiyonunun çağrıldığı pencereye ait win_ptr işaretçisi.
+funct_ptr: Bir expose olayı meydana geldiğinde çağrılacak işlevin işaretçisi. Bu işlev,
+ekstra parametrelerin işaretçisi parametresini alır.
+param: İşlevin kullanacağı ekstra parametrelerin işaretçisi.
+Fonksiyon geri dönüş değeri, herhangi bir değer döndürmez.
+
+Örneğin, bir grafik uygulaması geliştiricisi, bir pencerenin yeniden boyutlandırıldığında veya
+açıldığında (expose event) çizim işlemlerini gerçekleştirmek için mlx_expose_hook fonksiyonunu kullanabilir.
+Bu sayede, kullanıcının pencere boyutunu değiştirdiğinde veya pencereyi yeniden açtığında,
+programın grafiksel görünümünün güncellenmesini sağlayabilir.
+
+
+11. int	mlx_loop_hook (void *mlx_ptr, int (*funct_ptr)(), void *param);
+
+
+Bu fonksiyon, MLX (MiniLibX) kütüphanesi içinde kullanılan bir döngü fonksiyonudur.
+MLX, basit 2D grafik uygulamaları için kullanılan bir kütüphanedir ve özellikle C dilinde kullanılmaktadır.
+
+mlx_loop_hook() fonksiyonu, programınızın ana döngüsü sırasında çağrılacak bir işlevi (fonksiyonu) tanımlamanıza olanak tanır.
+Bu işlev, birkaç argüman alır:
+
+mlx_ptr: MLX bağlamına (context) işaret eden bir işaretçi. Bu, mlx_init() işlevi tarafından döndürülen değerdir.
+funct_ptr: Çağrılacak işlevin (fonksiyonun) bir işaretçisi. Bu, ana döngü sırasında sürekli olarak çağrılacak işlevdir.
+param: İşlevin (fonksiyonun) bir argümanı. Bu, işlevin ihtiyaç duyabileceği herhangi bir veriye işaret edebilir.
+mlx_loop_hook() fonksiyonu, programınızın ana döngüsünü başlatır ve funct_ptr işlevini sürekli olarak çağırır.
+Bu, örneğin bir oyun motorunda her çerçevenin işlenmesi için kullanılabilir. funct_ptr işlevi, programınızın her
+döngüsünde işlenecek ekran güncellemeleri, klavye ve fare girdileri gibi işlevleri içerebilir.
+
+mlx_loop_hook() fonksiyonu, MLX kütüphanesi tarafından sağlanan bir döngü fonksiyonudur ve programınızın ana
+döngüsünü işleme şeklini değiştirebilir. Bu nedenle, programınızın diğer bölümleri ile uyumlu olarak kullanılmalıdır.
+
+
+12. int	mlx_loop (void *mlx_ptr);
+
+mlx_loop() fonksiyonu, MLX (MiniLibX) kütüphanesi içinde kullanılan bir döngü fonksiyonudur.
+MLX, basit 2D grafik uygulamaları için kullanılan bir kütüphanedir ve özellikle C dilinde kullanılmaktadır.
+
+mlx_loop() fonksiyonu, programınızın ana döngüsünü başlatır ve kullanıcının programınızı kapatana kadar çalışır.
+Bu, örneğin bir oyun motoru veya grafiksel bir uygulama için uygun bir döngüdür. Kullanıcının programı kapatması
+durumunda mlx_loop() fonksiyonu sona erer ve programınız sona erer.
+
+mlx_loop() fonksiyonu, programınızın ana döngüsünü oluşturur ve ekrana çıktı göstermek,
+klavye ve fare girdilerini almak, işlevleri sırayla işlemek gibi görevleri gerçekleştirir.
+Bu işlev, programınızın çalışması için önemlidir ve genellikle MLX kütüphanesi ile birlikte kullanılır.
+
+mlx_loop() fonksiyonu, MLX kütüphanesi tarafından sağlanan bir döngü fonksiyonudur ve programınızın
+ana döngüsünü işleme şeklini belirler. Bu nedenle, programınızın diğer bölümleri ile uyumlu olarak kullanılmalıdır.
+
+
+
+13. int	mlx_string_put(void *mlx_ptr, void *win_ptr, int x, int y, int color, char *string);
+
+mlx_string_put() fonksiyonu, MLX (MiniLibX) kütüphanesi kullanılarak oluşturulan bir pencere üzerinde bir
+metin (string) yazdırmak için kullanılır. Bu fonksiyon, C dili tarafından desteklenen standart bir işlev
+değildir ve yalnızca MLX kütüphanesi ile kullanılabilir.
+
+mlx_string_put() fonksiyonu, birkaç argüman alır:
+
+mlx_ptr: MLX bağlamına (context) işaret eden bir işaretçi. Bu, mlx_init() işlevi tarafından döndürülen değerdir.
+win_ptr: Metnin yazdırılacağı pencereye işaret eden bir işaretçi. Bu, mlx_new_window() işlevi tarafından döndürülen değerdir.
+x: Metnin sol üst köşesinin x koordinatı.
+y: Metnin sol üst köşesinin y koordinatı.
+color: Yazdırılacak metnin rengi. Bu, 0xAARRGGBB formatında bir tam sayıdır.
+string: Yazdırılacak metin.
+mlx_string_put() fonksiyonu, belirtilen pencereye, belirtilen koordinatlarda belirtilen renkte bir metin yazdırır.
+Bu işlev, örneğin bir oyun arayüzünde veya bir grafiksel metin editöründe kullanılabilir.
+
+mlx_string_put() fonksiyonu, MLX kütüphanesi tarafından sağlanan bir metin işleme işlevi olduğu için,
+programınızın diğer bölümleriyle uyumlu olarak kullanılmalıdır.
+
+
+
+14. void	*mlx_xpm_to_image(void *mlx_ptr, char **xpm_data, int *width, int *height);
+
+
+mlx_xpm_to_image() fonksiyonu, MLX (MiniLibX) kütüphanesi kullanılarak oluşturulan bir görüntü (image) yapısını, XPM (X PixMap) verileri kullanarak oluşturmak için kullanılır.
+
+Bu fonksiyon, üç argüman alır:
+
+mlx_ptr: MLX bağlamına (context) işaret eden bir işaretçi.
+Bu, mlx_init() işlevi tarafından döndürülen değerdir.
+xpm_data: XPM verilerini içeren bir karakter dizisi. Bu veriler,
+XPM formatında bir resmin piksel verilerini ve renk paletini içerir.
+width: Görüntünün genişliğini tutan bir işaretçi. Bu, işlev tarafından atanan bir değerdir.
+height: Görüntünün yüksekliğini tutan bir işaretçi. Bu, işlev tarafından atanan bir değerdir.
+mlx_xpm_to_image() işlevi, xpm_data ile belirtilen XPM verilerini kullanarak bir görüntü
+yapısı oluşturur ve oluşturulan görüntünün işaretçisini döndürür. width ve height işaretçileri,
+oluşturulan görüntünün boyutlarını içeren değerlerle güncellenir.
+
+Bu fonksiyon, MLX kütüphanesi tarafından sağlanan bir görüntü oluşturma işlevi olduğu için,
+programınızın diğer bölümleriyle uyumlu olarak kullanılmalıdır.
+
+
+15. void	*mlx_xpm_file_to_image(void *mlx_ptr, char *filename, int *width, int *height);
+
+Bu fonksiyon, XPM (X PixMap) dosya formatındaki bir görüntüyü yüklemek ve bir MLX (Mac Graphics Library)
+resim yapısına dönüştürmek için kullanılır. Bu işlem, grafik uygulamaları geliştirirken sıklıkla kullanılan bir adımdır.
+
+Fonksiyon, yüklenen görüntünün genişliğini ve yüksekliğini belirleyen iki tam sayı işaretçisi (int *)
+ile birlikte kullanılır. Bu işaretçiler, işlevin çağrıldığı noktada işlevin içinde oluşturulan
+ve doldurulan değişkenlerdir. Bu şekilde, işlev çağrısı sonrasında genişlik ve yükseklik bilgileri elde edilebilir.
+
+Fonksiyon, yüklenen görüntüyü temsil etmek için bir void işaretçisi döndürür. Bu işaretçi, bir MLX resim yapısı için gerekli olan tüm bilgileri içerir. Bu resim yapısı daha sonra grafik uygulamalarında kullanılabilir.
