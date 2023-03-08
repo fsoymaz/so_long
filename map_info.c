@@ -6,7 +6,7 @@
 /*   By: fsoymaz <fsoymaz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/05 23:27:30 by fatihsoymaz       #+#    #+#             */
-/*   Updated: 2023/03/06 17:24:13 by fsoymaz          ###   ########.fr       */
+/*   Updated: 2023/03/08 14:46:06 by fsoymaz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,19 +17,33 @@ void	map_lines(void)
 {
 	char	*line;
 	int		fd;
-	int		line_count;
+	int		i;
 
-	line_count = 0;
+	i = 0;
 	fd = open("map.ber", O_RDONLY);
 	line = get_next_line(fd);
 	while (line)
 	{
 		free(line);
-		line_count++;
+		i++;
 		line = get_next_line(fd);
 	}
+	t_map.l_cnt = i;
 	close(fd);
-	t_map.line_count = line_count;
+}
+
+void	map_width(void)
+{
+	char	*line;
+	int		fd;
+
+	t_map.w_cnt = 0;
+	fd = open("map.ber", O_RDONLY);
+	line = get_next_line(fd);
+	free(line);
+	while (line[t_map.w_cnt])
+		t_map.w_cnt++;
+	t_map.w_cnt--;
 }
 
 char	**readmap(void)
@@ -39,12 +53,12 @@ char	**readmap(void)
 	int		fd;
 
 	map_lines();
-	t_map.map = malloc((t_map.line_count + 1) * sizeof(char *));
+	t_map.map = malloc((t_map.l_cnt + 1) * sizeof(char *));
 	if (!t_map.map)
 		return (NULL);
 	fd = open("map.ber", O_RDONLY);
 	i = 0;
-	while (t_map.line_count-- > 0)
+	while (t_map.l_cnt-- > 0)
 	{
 		str = get_next_line(fd);
 		t_map.map[i++] = str;
@@ -54,17 +68,54 @@ char	**readmap(void)
 	return (t_map.map);
 }
 
-int	main(void)
+void	wall_check(void)
 {
-	char	**map;
-	int		i;
+	int	i;
+	int	j;
 
-	readmap();
-	i = 0;
-	while (t_map.map[i])
+	map_lines();
+	map_width();
+	i = -1;
+	while (t_map.map[++i])
 	{
-		printf("%s", t_map.map[i]);
-		i++;
+		j = -1;
+		while (t_map.map[i][++j] && j < t_map.w_cnt)
+		{
+			if (t_map.map[i][0] != '1' || t_map.map[i][t_map.w_cnt - 1] != '1' \
+			|| t_map.map[0][j] != '1' || t_map.map[t_map.l_cnt - 1][j] != '1')
+			{
+				write (2, "bitch", 5);
+				exit(1);
+			}
+		}
 	}
-	return (0);
+}
+
+void	map_info(void)
+{
+	int	i;
+	int	j;
+
+	i = -1;
+	readmap();
+	while (t_map.map[++i])
+	{
+		j = -1;
+		while (t_map.map[i][++j])
+		{
+			if (t_map.map[i][j] == 'E')
+				t_map.exit_count++;
+			else if (t_map.map[i][j] == 'P')
+			{
+				t_map.chk_player++;
+				t_map.p_col = j;
+				t_map.p_row = i;
+			}
+			else if (t_map.map[i][j] == 'C')
+				t_map.coin_count++;
+			else
+				check_map_chars(t_map.map[i][j]);
+		}
+	}
+	wall_check();
 }
