@@ -1,5 +1,5 @@
 NAME = so_long
-SRCS = map_info.c ./SRC/get_next_line/libftgnl.a
+SRCS = map_info.c map_check.c utils.c window.c main.c ./SRC/get_next_line/libftgnl.a
 LIBFT = libft.a
 GNL_SRCS = ./SRC/get_next_line/libftgnl.a
 MLX = ./SRC/mlx/libmlx.a

@@ -6,21 +6,21 @@
 /*   By: fsoymaz <fsoymaz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/05 23:27:30 by fatihsoymaz       #+#    #+#             */
-/*   Updated: 2023/03/08 14:46:06 by fsoymaz          ###   ########.fr       */
+/*   Updated: 2023/03/09 16:42:50 by fsoymaz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 #include <stdio.h>
 
-void	map_lines(void)
+void	map_lines(char **argv)
 {
 	char	*line;
 	int		fd;
 	int		i;
 
 	i = 0;
-	fd = open("map.ber", O_RDONLY);
+	fd = open(argv[1], O_RDONLY);
 	line = get_next_line(fd);
 	while (line)
 	{
@@ -32,31 +32,32 @@ void	map_lines(void)
 	close(fd);
 }
 
-void	map_width(void)
+void	map_width(char **argv)
 {
 	char	*line;
 	int		fd;
 
 	t_map.w_cnt = 0;
-	fd = open("map.ber", O_RDONLY);
+	fd = open(argv[1], O_RDONLY);
 	line = get_next_line(fd);
 	free(line);
 	while (line[t_map.w_cnt])
 		t_map.w_cnt++;
 	t_map.w_cnt--;
+	close(fd);
 }
 
-char	**readmap(void)
+char	**readmap(char **argv)
 {
 	char	*str;
 	int		i;
 	int		fd;
 
-	map_lines();
+	map_lines(argv);
 	t_map.map = malloc((t_map.l_cnt + 1) * sizeof(char *));
 	if (!t_map.map)
 		return (NULL);
-	fd = open("map.ber", O_RDONLY);
+	fd = open(argv[1], O_RDONLY);
 	i = 0;
 	while (t_map.l_cnt-- > 0)
 	{
@@ -68,36 +69,13 @@ char	**readmap(void)
 	return (t_map.map);
 }
 
-void	wall_check(void)
-{
-	int	i;
-	int	j;
-
-	map_lines();
-	map_width();
-	i = -1;
-	while (t_map.map[++i])
-	{
-		j = -1;
-		while (t_map.map[i][++j] && j < t_map.w_cnt)
-		{
-			if (t_map.map[i][0] != '1' || t_map.map[i][t_map.w_cnt - 1] != '1' \
-			|| t_map.map[0][j] != '1' || t_map.map[t_map.l_cnt - 1][j] != '1')
-			{
-				write (2, "bitch", 5);
-				exit(1);
-			}
-		}
-	}
-}
-
-void	map_info(void)
+void	map_info(char **argv)
 {
 	int	i;
 	int	j;
 
 	i = -1;
-	readmap();
+	readmap(argv);
 	while (t_map.map[++i])
 	{
 		j = -1;
@@ -117,5 +95,5 @@ void	map_info(void)
 				check_map_chars(t_map.map[i][j]);
 		}
 	}
-	wall_check();
+	wall_check(argv);
 }

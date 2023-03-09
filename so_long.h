@@ -6,7 +6,7 @@
 /*   By: fsoymaz <fsoymaz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/17 18:04:40 by fsoymaz           #+#    #+#             */
-/*   Updated: 2023/03/08 14:44:56 by fsoymaz          ###   ########.fr       */
+/*   Updated: 2023/03/09 17:46:34 by fsoymaz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,11 +41,17 @@ typedef struct s_data
 	char	**map;
 }				t_data;
 
-void	map_lines(void);
-char	**readmap(void);
-void	map_info(void);
-void	map_width(void);
-void	check_arg(void);
+void	map_lines(char **argv);
+char	**readmap(char **argv);
+void	map_info(char **argv);
+void	map_width(char **argv);
+void	check_arg(char **argv);
 void	check_map_chars(char c);
-void	wall_check(void);
+void	wall_check(char **argv);
+void	wall_row_check(void);
+int		ber_check(char **argv);
+char	*ft_strchr(const char *s, int c);
+int		key_hook(int keycode, t_data *data);
+void	move_player(t_data *data, int x, int y);
+int		close_with(void);
 #endif
