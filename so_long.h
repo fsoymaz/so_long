@@ -6,7 +6,7 @@
 /*   By: fsoymaz <fsoymaz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/17 18:04:40 by fsoymaz           #+#    #+#             */
-/*   Updated: 2023/03/09 17:46:34 by fsoymaz          ###   ########.fr       */
+/*   Updated: 2023/03/11 03:18:06 by fsoymaz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 # include "./SRC/get_next_line/get_next_line.h"
 # include <fcntl.h>
 # include "./SRC/mlx/mlx.h"
+# include <stdio.h>
 
 struct s_map
 {
@@ -28,18 +29,34 @@ struct s_map
 	int		exit_count;
 }	t_map;
 
-typedef struct s_data
+typedef struct s_mlx
 {
-	void	*mlx;
-	void	*win;
-	void	*img;
-	char	*path;
-	int		i_h;
-	int		i_w;
+	char	*p_p;
+	char	*w_p;
+	char	*c_p;
+	char	*g_p;
+	char	*f_p;
+	char	*m_p;
+
 	int		x;
 	int		y;
-	char	**map;
-}				t_data;
+
+	int		x1;
+	int		y1;
+
+	char	*p;
+	char	*w;
+	char	*c;
+	char	*g;
+	char	*f;
+	char	*m;
+
+	int		a;
+	int		b;
+
+	void	*win;
+	void	*init;
+}	t_mlx;
 
 void	map_lines(char **argv);
 char	**readmap(char **argv);
@@ -51,7 +68,13 @@ void	wall_check(char **argv);
 void	wall_row_check(void);
 int		ber_check(char **argv);
 char	*ft_strchr(const char *s, int c);
-int		key_hook(int keycode, t_data *data);
-void	move_player(t_data *data, int x, int y);
-int		close_with(void);
+char	*ft_strdup(const char *s1);
+int		path_checker(void);
+char	**map_duplicator(void);
+void	path_recursive(char **map, int c, int r);
+void	xpm_to_img(t_mlx *map);
+void	mlx_control(t_mlx *mlx);
+void	put_img(t_mlx *mlx, char **map);
+void	img_printer(t_mlx *mlx, char c);
+
 #endif
