@@ -6,7 +6,7 @@
 /*   By: fsoymaz <fsoymaz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/11 03:07:52 by fsoymaz           #+#    #+#             */
-/*   Updated: 2023/03/11 03:35:08 by fsoymaz          ###   ########.fr       */
+/*   Updated: 2023/03/11 03:58:25 by fsoymaz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	xpm_to_img(t_mlx *map)
 {
-	map->p_p = "./img/player.xpm";
+	map->p_p = "./xpms/player.xpm";
 	map->w_p = "./xpms/wall.xpm";
 	map->c_p = "./xpms/coin.xpm";
 	map->g_p = "./xpms/door.xpm";
