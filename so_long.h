@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fsoymaz <fsoymaz@student.42.fr>            +#+  +:+       +#+        */
+/*   By: fatihsoymaz <fatihsoymaz@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/17 18:04:40 by fsoymaz           #+#    #+#             */
-/*   Updated: 2023/03/11 03:18:06 by fsoymaz          ###   ########.fr       */
+/*   Updated: 2023/03/13 16:07:18 by fatihsoymaz      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,11 @@ struct s_map
 	int		coin_count;
 	int		chk_player;
 	int		exit_count;
+	int		exit_col;
+	int		exit_row;
+	int		gate_col;
+	int		gate_row;
+	int		current_coin;
 }	t_map;
 
 typedef struct s_mlx
@@ -58,10 +63,10 @@ typedef struct s_mlx
 	void	*init;
 }	t_mlx;
 
+int		close_with(void);
 void	map_lines(char **argv);
 char	**readmap(char **argv);
 void	map_info(char **argv);
-void	map_width(char **argv);
 void	check_arg(char **argv);
 void	check_map_chars(char c);
 void	wall_check(char **argv);
@@ -76,5 +81,9 @@ void	xpm_to_img(t_mlx *map);
 void	mlx_control(t_mlx *mlx);
 void	put_img(t_mlx *mlx, char **map);
 void	img_printer(t_mlx *mlx, char c);
+void	ft_putstr(char *str);
+void	ft_putnbr(int n);
+void	move_left(char **map, int *step);
+void	exit_checker(t_mlx *mlx);
 
 #endif

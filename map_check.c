@@ -6,7 +6,7 @@
 /*   By: fsoymaz <fsoymaz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/07 21:58:12 by fsoymaz           #+#    #+#             */
-/*   Updated: 2023/03/11 00:48:48 by fsoymaz          ###   ########.fr       */
+/*   Updated: 2023/03/11 17:02:33 by fsoymaz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ void	wall_check(char **argv)
 	int	j;
 
 	map_lines(argv);
-	map_width(argv);
+	//map_width(argv);
 	i = -1;
 	while (t_map.map[++i])
 	{

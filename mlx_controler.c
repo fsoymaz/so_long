@@ -3,14 +3,20 @@
 /*                                                        :::      ::::::::   */
 /*   mlx_controler.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fsoymaz <fsoymaz@student.42.fr>            +#+  +:+       +#+        */
+/*   By: fatihsoymaz <fatihsoymaz@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/11 03:07:52 by fsoymaz           #+#    #+#             */
-/*   Updated: 2023/03/11 03:58:25 by fsoymaz          ###   ########.fr       */
+/*   Updated: 2023/03/13 16:12:26 by fatihsoymaz      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
+
+int	close_with(void)
+{
+	exit(1);
+	return (0);
+}
 
 void	xpm_to_img(t_mlx *map)
 {
@@ -19,11 +25,13 @@ void	xpm_to_img(t_mlx *map)
 	map->c_p = "./xpms/coin.xpm";
 	map->g_p = "./xpms/door.xpm";
 	map->f_p = "./xpms/background.xpm";
+	map->m_p = "./xpms/player+gate.xpm";
 	map->w = mlx_xpm_file_to_image(map->init, map->w_p, &map->x, &map->y);
 	map->p = mlx_xpm_file_to_image(map->init, map->p_p, &map->x, &map->y);
 	map->c = mlx_xpm_file_to_image(map->init, map->c_p, &map->x, &map->y);
 	map->g = mlx_xpm_file_to_image(map->init, map->g_p, &map->x, &map->y);
 	map->f = mlx_xpm_file_to_image(map->init, map->f_p, &map->x, &map->y);
+	map->m = mlx_xpm_file_to_image(map->init, map->m_p, &map->x, &map->y);
 }
 
 void	img_printer(t_mlx *mlx, char c)
@@ -38,6 +46,9 @@ void	img_printer(t_mlx *mlx, char c)
 	if (c == 'P')
 	{
 		mlx_put_image_to_window(mlx->init, mlx->win, mlx->p, mlx->x1, mlx->y1);
+		if (t_map.gate_col == t_map.p_col
+			&& t_map.gate_row == t_map.p_row)
+			exit_checker(mlx);
 	}
 }
 
@@ -45,11 +56,7 @@ void	put_img(t_mlx *mlx, char **map)
 {
 	int	i;
 	int	j;
-	int	x;
-	int	y;
 
-	x = t_map.p_col * 64;
-	y = t_map.p_row * 64;
 	i = 0;
 	mlx->y1 = 0;
 	while (map[i] != NULL)
@@ -67,16 +74,15 @@ void	put_img(t_mlx *mlx, char **map)
 	}
 }
 
-void	mlx_control(t_mlx *mlx)
+void	move_left(char **map, int *step)
 {
-	int		l;
-	int		c;
-
-	l = t_map.l_cnt * 64;
-	c = t_map.w_cnt * 64;
-	mlx->init = mlx_init();
-	xpm_to_img(mlx);
-	mlx->win = mlx_new_window(mlx->init, c, l, "so_long");
-	put_img(mlx, t_map.map);
-	mlx_loop(mlx->init);
+	if (map[t_map.p_row][t_map.p_col - 1] != '1')
+	{
+		map[t_map.p_row][t_map.p_col] = '0';
+		map[t_map.p_row][t_map.p_col - 1] = 'P';
+		t_map.p_col--;
+		ft_putstr("step:");
+		ft_putnbr(++(*step));
+		ft_putstr("\n");
+	}
 }

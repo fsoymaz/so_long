@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map_info.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fsoymaz <fsoymaz@student.42.fr>            +#+  +:+       +#+        */
+/*   By: fatihsoymaz <fatihsoymaz@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/05 23:27:30 by fatihsoymaz       #+#    #+#             */
-/*   Updated: 2023/03/11 03:48:56 by fsoymaz          ###   ########.fr       */
+/*   Updated: 2023/03/13 04:09:27 by fatihsoymaz      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,19 +37,27 @@ void	map_lines(char **argv)
 	close(fd);
 }
 
-void	map_width(char **argv)
+void	gate_finder(char **map)
 {
-	char	*line;
-	int		fd;
+	int	i;
+	int	j;
 
-	t_map.w_cnt = 0;
-	fd = open(argv[1], O_RDONLY);
-	line = get_next_line(fd);
-	free(line);
-	while (line[t_map.w_cnt])
-		t_map.w_cnt++;
-	t_map.w_cnt--;
-	close(fd);
+	i = 0;
+	while (map[i])
+	{
+		j = 0;
+		while (map[i][j])
+		{
+			if (map[i][j] == 'E')
+			{
+				t_map.gate_col = j;
+				t_map.gate_row = i;
+				return ;
+			}
+			j++;
+		}
+		i++;
+	}
 }
 
 char	**readmap(char **argv)
@@ -70,7 +78,9 @@ char	**readmap(char **argv)
 		t_map.map[i++] = str;
 	}
 	t_map.map[i] = NULL;
+	gate_finder(t_map.map);
 	close(fd);
+	t_map.w_cnt = ft_strlen(t_map.map[0]) - 1;
 	return (t_map.map);
 }
 
