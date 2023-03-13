@@ -6,7 +6,7 @@
 /*   By: fsoymaz <fsoymaz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/11 05:01:56 by fsoymaz           #+#    #+#             */
-/*   Updated: 2023/03/13 19:53:35 by fsoymaz          ###   ########.fr       */
+/*   Updated: 2023/03/13 20:14:57 by fsoymaz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ void	move(char **map, int *step, int dx, int dy)
 		t_map.p_row += dy;
 		t_map.p_col += dx;
 		ft_putstr("step:");
-		ft_putnbr(++(*step));
+		ft_putnbr((*step)++);
 		ft_putstr("\n");
 	}
 }
@@ -57,6 +57,10 @@ int	ft_movement(int key, t_mlx *mlx)
 	if (t_map.gate_col == t_map.p_col && t_map.gate_row == t_map.p_row
 		&& t_map.current_coin == t_map.coin_count)
 		exit_checker(mlx);
+	if (key == 53)
+	{
+		close_with();
+	}
 	put_img(mlx, t_map.map);
 	write_s(mlx, step);
 	return (0);

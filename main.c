@@ -6,7 +6,7 @@
 /*   By: fsoymaz <fsoymaz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/09 16:56:24 by fsoymaz           #+#    #+#             */
-/*   Updated: 2023/03/13 20:00:13 by fsoymaz          ###   ########.fr       */
+/*   Updated: 2023/03/13 20:12:01 by fsoymaz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,10 @@ int	main(int argc, char **argv)
 	ber_check(argv);
 	check_arg(argv);
 	if (t_map.l_cnt > 128 || t_map.w_cnt > 128)
+	{
+		write (1, "to_long_map\n", 12);
 		exit(1);
+	}
 	path_checker();
 	mlx = malloc(sizeof(t_mlx));
 	if (!mlx)
