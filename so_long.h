@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fatihsoymaz <fatihsoymaz@student.42.fr>    +#+  +:+       +#+        */
+/*   By: fsoymaz <fsoymaz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/17 18:04:40 by fsoymaz           #+#    #+#             */
-/*   Updated: 2023/03/13 16:07:18 by fatihsoymaz      ###   ########.fr       */
+/*   Updated: 2023/03/13 19:53:40 by fsoymaz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,5 +85,7 @@ void	ft_putstr(char *str);
 void	ft_putnbr(int n);
 void	move_left(char **map, int *step);
 void	exit_checker(t_mlx *mlx);
+char	*ft_itoa(int n);
+void	write_s(t_mlx *mlx, int step);
 
 #endif

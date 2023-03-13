@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   mlx_controler.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fatihsoymaz <fatihsoymaz@student.42.fr>    +#+  +:+       +#+        */
+/*   By: fsoymaz <fsoymaz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/11 03:07:52 by fsoymaz           #+#    #+#             */
-/*   Updated: 2023/03/13 16:12:26 by fatihsoymaz      ###   ########.fr       */
+/*   Updated: 2023/03/13 19:52:23 by fsoymaz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void	xpm_to_img(t_mlx *map)
 	map->c_p = "./xpms/coin.xpm";
 	map->g_p = "./xpms/door.xpm";
 	map->f_p = "./xpms/background.xpm";
-	map->m_p = "./xpms/player+gate.xpm";
+	map->m_p = "./xpms/playerg.xpm";
 	map->w = mlx_xpm_file_to_image(map->init, map->w_p, &map->x, &map->y);
 	map->p = mlx_xpm_file_to_image(map->init, map->p_p, &map->x, &map->y);
 	map->c = mlx_xpm_file_to_image(map->init, map->c_p, &map->x, &map->y);
@@ -71,18 +71,5 @@ void	put_img(t_mlx *mlx, char **map)
 		}
 		mlx->y1 += 64;
 		i += 1;
-	}
-}
-
-void	move_left(char **map, int *step)
-{
-	if (map[t_map.p_row][t_map.p_col - 1] != '1')
-	{
-		map[t_map.p_row][t_map.p_col] = '0';
-		map[t_map.p_row][t_map.p_col - 1] = 'P';
-		t_map.p_col--;
-		ft_putstr("step:");
-		ft_putnbr(++(*step));
-		ft_putstr("\n");
 	}
 }

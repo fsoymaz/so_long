@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   mlx_controler2.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fatihsoymaz <fatihsoymaz@student.42.fr>    +#+  +:+       +#+        */
+/*   By: fsoymaz <fsoymaz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/11 05:01:56 by fsoymaz           #+#    #+#             */
-/*   Updated: 2023/03/13 16:09:00 by fatihsoymaz      ###   ########.fr       */
+/*   Updated: 2023/03/13 19:53:35 by fsoymaz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,16 @@ void	move(char **map, int *step, int dx, int dy)
 	}
 }
 
+void	write_s(t_mlx *mlx, int step)
+{
+	char	*v;
+
+	v = ft_itoa(step);
+	mlx_string_put(mlx->init, mlx->win, 5, 20, 0xffff99, "step: ");
+	mlx_string_put(mlx->init, mlx->win, 45, 20, 0xffff99, v);
+	free(v);
+}
+
 int	ft_movement(int key, t_mlx *mlx)
 {
 	static int	step;
@@ -48,6 +58,7 @@ int	ft_movement(int key, t_mlx *mlx)
 		&& t_map.current_coin == t_map.coin_count)
 		exit_checker(mlx);
 	put_img(mlx, t_map.map);
+	write_s(mlx, step);
 	return (0);
 }
 
