@@ -6,7 +6,7 @@
 /*   By: fsoymaz <fsoymaz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/11 01:38:03 by fsoymaz           #+#    #+#             */
-/*   Updated: 2023/03/13 19:30:37 by fsoymaz          ###   ########.fr       */
+/*   Updated: 2023/03/13 21:07:34 by fsoymaz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,9 +61,11 @@ int	path_checker(void)
 			map[i][j] != '1' && map[i][j] != '0')
 			{
 				write (1, "errormap\n", 9);
+				map_free(map);
 				exit(1);
 			}
 		}
 	}
+	map_free(map);
 	return (1);
 }

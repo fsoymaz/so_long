@@ -6,7 +6,7 @@
 /*   By: fsoymaz <fsoymaz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/07 21:58:12 by fsoymaz           #+#    #+#             */
-/*   Updated: 2023/03/11 17:02:33 by fsoymaz          ###   ########.fr       */
+/*   Updated: 2023/03/13 21:08:19 by fsoymaz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ void	check_arg(char **argv)
 	map_info(argv);
 	if (t_map.chk_player != 1 || t_map.exit_count != 1 || t_map.coin_count == 0)
 	{
+		free(t_map.map);
 		write (2, "fazla arguman var\n", 18);
 		exit(1);
 	}
@@ -43,6 +44,7 @@ void	wall_row_check(void)
 		i = ft_strlen(t_map.map[a]) - 1;
 		if (i != t_map.w_cnt)
 		{
+			free(t_map.map);
 			write (2, "satırlar esit degil\n", 20);
 			exit(1);
 		}
@@ -62,7 +64,6 @@ void	wall_check(char **argv)
 	int	j;
 
 	map_lines(argv);
-	//map_width(argv);
 	i = -1;
 	while (t_map.map[++i])
 	{

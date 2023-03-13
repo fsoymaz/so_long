@@ -6,7 +6,7 @@
 /*   By: fsoymaz <fsoymaz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/06 17:16:30 by fsoymaz           #+#    #+#             */
-/*   Updated: 2023/03/13 19:51:45 by fsoymaz          ###   ########.fr       */
+/*   Updated: 2023/03/13 21:11:57 by fsoymaz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,26 +94,4 @@ void	ft_putnbr(int n)
 	}
 	else
 		ft_putchar(n + 48);
-}
-
-
-void	map_free(char **map)
-{
-	int	i;
-
-	i = 0;
-	while (map[i])
-	{
-		free (map[i]);
-		i++;
-	}
-	free(map);
-}
-
-int	ft_exit(int key, t_mlx *mlx)
-{
-	(void)mlx;
-	(void)key;
-	map_free(t_map.map);
-	exit(0);
 }
