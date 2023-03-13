@@ -6,7 +6,7 @@
 /*   By: fsoymaz <fsoymaz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/11 05:01:56 by fsoymaz           #+#    #+#             */
-/*   Updated: 2023/03/13 20:14:57 by fsoymaz          ###   ########.fr       */
+/*   Updated: 2023/03/13 21:26:49 by fsoymaz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,6 +77,7 @@ void	mlx_control(t_mlx *mlx)
 	xpm_to_img(mlx);
 	mlx->win = mlx_new_window(mlx->init, c, l, "so_long");
 	put_img(mlx, t_map.map);
+	write_s(mlx, 0);
 	mlx_hook(mlx->win, 2, 0, &ft_movement, mlx);
 	mlx_hook(mlx->win, 17, 0, &close_with, mlx);
 	mlx_loop(mlx->init);
