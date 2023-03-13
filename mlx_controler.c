@@ -6,7 +6,7 @@
 /*   By: fsoymaz <fsoymaz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/11 03:07:52 by fsoymaz           #+#    #+#             */
-/*   Updated: 2023/03/13 19:52:23 by fsoymaz          ###   ########.fr       */
+/*   Updated: 2023/03/13 23:34:48 by fsoymaz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,11 @@ void	xpm_to_img(t_mlx *map)
 	map->g = mlx_xpm_file_to_image(map->init, map->g_p, &map->x, &map->y);
 	map->f = mlx_xpm_file_to_image(map->init, map->f_p, &map->x, &map->y);
 	map->m = mlx_xpm_file_to_image(map->init, map->m_p, &map->x, &map->y);
+	if (!map->p || !map->w || !map->c || !map->g || !map->f || !map->m)
+	{
+		write(1, "there is no path\n", 17);
+		system("leaks so_long");
+	}
 }
 
 void	img_printer(t_mlx *mlx, char c)
