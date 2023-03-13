@@ -6,7 +6,7 @@
 /*   By: fsoymaz <fsoymaz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/11 05:01:56 by fsoymaz           #+#    #+#             */
-/*   Updated: 2023/03/13 21:26:49 by fsoymaz          ###   ########.fr       */
+/*   Updated: 2023/03/13 21:28:41 by fsoymaz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ void	move(char **map, int *step, int dx, int dy)
 		t_map.p_row += dy;
 		t_map.p_col += dx;
 		ft_putstr("step:");
-		ft_putnbr((*step)++);
+		ft_putnbr(++(*step));
 		ft_putstr("\n");
 	}
 }
