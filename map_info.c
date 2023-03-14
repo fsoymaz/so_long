@@ -6,7 +6,7 @@
 /*   By: fsoymaz <fsoymaz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/05 23:27:30 by fatihsoymaz       #+#    #+#             */
-/*   Updated: 2023/03/14 09:11:25 by fsoymaz          ###   ########.fr       */
+/*   Updated: 2023/03/14 14:17:47 by fsoymaz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ void	gate_finder(char **map)
 	}
 }
 
-char	**readmap(char **argv)
+void	readmap(char **argv)
 {
 	char	*str;
 	int		i;
@@ -70,7 +70,7 @@ char	**readmap(char **argv)
 	map_lines(argv);
 	t_map.map = malloc((t_map.l_cnt + 1) * sizeof(char *));
 	if (!t_map.map)
-		return (NULL);
+		return ;
 	fd = open(argv[1], O_RDONLY);
 	i = 0;
 	while (t_map.l_cnt-- > 0)
@@ -82,7 +82,6 @@ char	**readmap(char **argv)
 	gate_finder(t_map.map);
 	close(fd);
 	t_map.w_cnt = ft_strlen(t_map.map[0]) - 1;
-	return (t_map.map);
 }
 
 void	map_info(char **argv)

@@ -6,7 +6,7 @@
 /*   By: fsoymaz <fsoymaz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/07 21:58:12 by fsoymaz           #+#    #+#             */
-/*   Updated: 2023/03/14 11:31:11 by fsoymaz          ###   ########.fr       */
+/*   Updated: 2023/03/14 13:14:57 by fsoymaz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,8 @@ void	check_map_chars(char c)
 {
 	if (c != 'C' && c != 'P' && c != 'E' && c != '0' && c != '1' && c != '\n')
 	{
-		write(2, "Invalid character in map.\n", 26);
-		exit(1);
+		ft_putstr("Invalid character in map.\n");
+		exit(0);
 	}
 }
 
@@ -27,7 +27,7 @@ void	check_arg(char **argv)
 	if (t_map.chk_player != 1 || t_map.exit_count != 1 || t_map.coin_count == 0)
 	{
 		free(t_map.map);
-		write (2, "fazla arguman var\n", 18);
+		ft_putstr("number of arguments is not correct\n");
 		exit(1);
 	}
 	wall_row_check();
@@ -45,16 +45,16 @@ void	wall_row_check(void)
 		if (i != t_map.w_cnt)
 		{
 			free(t_map.map);
-			write (2, "satırlar esit degil\n", 20);
-			exit(1);
+			ft_putstr("lines are not equal in length\n");
+			exit(0);
 		}
 		a++;
 	}
 	i = ft_strlen(t_map.map[a]);
 	if (i != t_map.w_cnt)
 	{
-		write (2, "satırlar esit degil\n", 20);
-		exit(1);
+		ft_putstr("lines are not equal in length\n");
+		exit(0);
 	}
 }
 
@@ -73,7 +73,7 @@ void	wall_check(char **argv)
 			if (t_map.map[i][0] != '1' || t_map.map[i][t_map.w_cnt - 1] != '1' \
 			|| t_map.map[0][j] != '1' || t_map.map[t_map.l_cnt - 1][j] != '1')
 			{
-				ft_putstr("duvar bozuk\n");
+				ft_putstr("the walls are not complete\n");
 				exit(1);
 			}
 		}
@@ -86,21 +86,21 @@ int	ber_check(char **argv)
 	int		a;
 
 	str = ft_strrchr(argv[1], '.');
-	if (!str)
+	if (str == NULL)
 	{
-		free(str);
-		return (0);
+		ft_putstr("ERROR: file is not find\n");
+		exit(1);
 	}
-	if (((str == NULL || ft_strcmp(str, ".ber") != 0) && ft_strlen(str) != 4))
+	else if (((ft_strcmp(str, ".ber") != 0) && ft_strlen(str) != 4))
 	{
-		ft_putstr("Hata: dosya adi gecersiz\n");
+		ft_putstr("ERROR:filename length not four or not .ber \n");
 		exit(1);
 	}
 	a = ft_strlen(argv[1]);
 	if (argv[1][0] == '.' || (argv[1][a - 4] == '.' && (argv[1][a - 5] == '.'
 		|| argv[1][a - 5] == '/')))
 	{
-		ft_putstr("Hata: gizli dosya adi\n");
+		ft_putstr("ERROR: filename is incorrect\n");
 		exit(1);
 	}
 	return (1);

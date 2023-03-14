@@ -6,7 +6,7 @@
 /*   By: fsoymaz <fsoymaz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/17 18:04:40 by fsoymaz           #+#    #+#             */
-/*   Updated: 2023/03/14 09:05:12 by fsoymaz          ###   ########.fr       */
+/*   Updated: 2023/03/14 14:15:42 by fsoymaz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ typedef struct s_mlx
 
 int		close_with(void);
 void	map_lines(char **argv);
-char	**readmap(char **argv);
+void	readmap(char **argv);
 void	map_info(char **argv);
 void	check_arg(char **argv);
 void	check_map_chars(char c);
