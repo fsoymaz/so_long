@@ -6,7 +6,7 @@
 /*   By: fsoymaz <fsoymaz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/05 23:27:30 by fatihsoymaz       #+#    #+#             */
-/*   Updated: 2023/03/13 21:02:13 by fsoymaz          ###   ########.fr       */
+/*   Updated: 2023/03/14 09:11:25 by fsoymaz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void	map_lines(char **argv)
 	line = get_next_line(fd);
 	if (line == NULL)
 	{
-		write (1, "mapyok\n", 7);
+		ft_putstr("mapyok\n");
 		free(line);
 		exit(1);
 	}

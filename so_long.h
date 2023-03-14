@@ -6,7 +6,7 @@
 /*   By: fsoymaz <fsoymaz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/17 18:04:40 by fsoymaz           #+#    #+#             */
-/*   Updated: 2023/03/13 21:07:06 by fsoymaz          ###   ########.fr       */
+/*   Updated: 2023/03/14 09:05:12 by fsoymaz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,5 +88,6 @@ void	exit_checker(t_mlx *mlx);
 char	*ft_itoa(int n);
 void	write_s(t_mlx *mlx, int step);
 void	map_free(char **map);
-
+int		ft_strcmp(const char *s1, const char *s2);
+char	*ft_strrchr(const char *s, int c);
 #endif

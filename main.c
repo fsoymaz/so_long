@@ -6,7 +6,7 @@
 /*   By: fsoymaz <fsoymaz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/09 16:56:24 by fsoymaz           #+#    #+#             */
-/*   Updated: 2023/03/13 21:12:53 by fsoymaz          ###   ########.fr       */
+/*   Updated: 2023/03/14 09:13:37 by fsoymaz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,14 +19,14 @@ int	main(int argc, char **argv)
 
 	if (argc != 2)
 	{
-		write (1, "ERROR\n", 6);
+		ft_putstr("ERROR\n");
 		exit(1);
 	}
 	ber_check(argv);
 	check_arg(argv);
 	if (t_map.l_cnt > 128 || t_map.w_cnt > 128)
 	{
-		write (1, "to_long_map\n", 12);
+		ft_putstr("to_long_map\n");
 		exit(1);
 	}
 	path_checker();

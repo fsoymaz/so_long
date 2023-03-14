@@ -9,7 +9,7 @@ MLX = ./SRC/mlx/libmlx.a
 CFLAGS = -Wall -Wextra -Werror
 LFLAGS = -framework OpenGL -framework AppKit -L./SRC/mlx -lmlx
 
-
+CC=gcc
 
 all: $(MLX) $(NAME) $(OBJS) $(GNL_OBJS)
 

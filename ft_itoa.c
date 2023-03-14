@@ -6,7 +6,7 @@
 /*   By: fsoymaz <fsoymaz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/13 21:11:47 by fsoymaz           #+#    #+#             */
-/*   Updated: 2023/03/13 21:11:49 by fsoymaz          ###   ########.fr       */
+/*   Updated: 2023/03/14 09:08:15 by fsoymaz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,10 +68,32 @@ void	map_free(char **map)
 	free(map);
 }
 
-int	ft_exit(int key, t_mlx *mlx)
+int	ft_strcmp(const char *s1, const char *s2)
 {
-	(void)mlx;
-	(void)key;
-	map_free(t_map.map);
-	exit(0);
+	int	i;
+
+	i = 0;
+	while (s1[i] != '\0' && s2[i] != '\0')
+	{
+		if (s1[i] != s2[i])
+			return (s1[i] - s2[i]);
+		i++;
+	}
+	return (s1[i] - s2[i]);
+}
+
+char	*ft_strrchr(const char *s, int c)
+{
+	int		i;
+	char	*str;
+
+	str = (char *)s;
+	i = ft_strlen(s);
+	while (i >= 0)
+	{
+		if (str[i] == (char)c)
+			return ((str + i));
+		i--;
+	}
+	return (NULL);
 }

@@ -6,7 +6,7 @@
 /*   By: fsoymaz <fsoymaz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/11 01:38:03 by fsoymaz           #+#    #+#             */
-/*   Updated: 2023/03/13 21:07:34 by fsoymaz          ###   ########.fr       */
+/*   Updated: 2023/03/14 02:55:48 by fsoymaz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ int	path_checker(void)
 		j = -1;
 		while (map[i][++j])
 		{
-			if (map[i][j] != '*' && map[i][j] != '\n' && map[i][j] != 'E' &&
+			if (map[i][j] != '*' && map[i][j] != '\n' &&
 			map[i][j] != '1' && map[i][j] != '0')
 			{
 				write (1, "errormap\n", 9);

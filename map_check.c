@@ -6,7 +6,7 @@
 /*   By: fsoymaz <fsoymaz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/07 21:58:12 by fsoymaz           #+#    #+#             */
-/*   Updated: 2023/03/13 21:08:19 by fsoymaz          ###   ########.fr       */
+/*   Updated: 2023/03/14 09:12:12 by fsoymaz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,7 @@ void	wall_check(char **argv)
 			if (t_map.map[i][0] != '1' || t_map.map[i][t_map.w_cnt - 1] != '1' \
 			|| t_map.map[0][j] != '1' || t_map.map[t_map.l_cnt - 1][j] != '1')
 			{
-				write (2, "duvar bozuk\n", 12);
+				ft_putstr("duvar bozuk\n");
 				exit(1);
 			}
 		}
@@ -84,23 +84,17 @@ int	ber_check(char **argv)
 {
 	char	*str;
 
-	str = ft_strchr(argv[1], '.');
-	if (ft_strlen(str) != 4)
+	str = ft_strrchr(argv[1], '.');
+	if (((str != NULL || ft_strcmp(str, ".ber") != 0))
+		&& (ft_strlen(argv[1])) == 4)
 	{
-		write (1, "hata\n", 5);
+		ft_putstr("Hata: dosya adi gecersiz\n");
 		exit(1);
 	}
-	if (str[0] == '.')
+	else if (str[-1] == '.' && str[-2] != '.')
 	{
-		if (str[1] == 'b')
-		{
-			if (str[2] == 'e')
-			{
-				if (str[3] == 'r')
-					return (1);
-			}
-		}
+		ft_putstr("Hata: gizli dosya adi\n");
+		exit(1);
 	}
-	write (2, "map hata\n", 9);
-	exit(1);
+	return (1);
 }
