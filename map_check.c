@@ -6,7 +6,7 @@
 /*   By: fsoymaz <fsoymaz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/07 21:58:12 by fsoymaz           #+#    #+#             */
-/*   Updated: 2023/03/14 09:12:12 by fsoymaz          ###   ########.fr       */
+/*   Updated: 2023/03/14 11:31:11 by fsoymaz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,15 +83,22 @@ void	wall_check(char **argv)
 int	ber_check(char **argv)
 {
 	char	*str;
+	int		a;
 
 	str = ft_strrchr(argv[1], '.');
-	if (((str != NULL || ft_strcmp(str, ".ber") != 0))
-		&& (ft_strlen(argv[1])) == 4)
+	if (!str)
+	{
+		free(str);
+		return (0);
+	}
+	if (((str == NULL || ft_strcmp(str, ".ber") != 0) && ft_strlen(str) != 4))
 	{
 		ft_putstr("Hata: dosya adi gecersiz\n");
 		exit(1);
 	}
-	else if (str[-1] == '.' && str[-2] != '.')
+	a = ft_strlen(argv[1]);
+	if (argv[1][0] == '.' || (argv[1][a - 4] == '.' && (argv[1][a - 5] == '.'
+		|| argv[1][a - 5] == '/')))
 	{
 		ft_putstr("Hata: gizli dosya adi\n");
 		exit(1);
