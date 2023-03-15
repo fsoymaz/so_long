@@ -3,19 +3,23 @@
 /*                                                        :::      ::::::::   */
 /*   mlx_controler.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fsoymaz <fsoymaz@student.42.fr>            +#+  +:+       +#+        */
+/*   By: fatihsoymaz <fatihsoymaz@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/11 03:07:52 by fsoymaz           #+#    #+#             */
-/*   Updated: 2023/03/14 13:21:06 by fsoymaz          ###   ########.fr       */
+/*   Updated: 2023/03/15 12:26:43 by fatihsoymaz      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-int	close_with(void)
+void	exit_checker(t_mlx *mlx)
 {
-	exit(1);
-	return (0);
+	mlx_put_image_to_window(mlx->init, mlx->win, mlx->m, mlx->x1, mlx->y1);
+	if (t_map.current_coin == t_map.coin_count)
+	{
+		ft_putstr("success\n");
+		exit(0);
+	}
 }
 
 void	xpm_to_img(t_mlx *map)
@@ -35,7 +39,7 @@ void	xpm_to_img(t_mlx *map)
 	if (!map->p || !map->w || !map->c || !map->g || !map->f || !map->m)
 	{
 		ft_putstr("there is no path\n");
-		exit(1);
+		exit(0);
 	}
 }
 
@@ -51,8 +55,8 @@ void	img_printer(t_mlx *mlx, char c)
 	if (c == 'P')
 	{
 		mlx_put_image_to_window(mlx->init, mlx->win, mlx->p, mlx->x1, mlx->y1);
-		if (t_map.gate_col == t_map.p_col
-			&& t_map.gate_row == t_map.p_row)
+		if (t_map.exit_col == t_map.p_col
+			&& t_map.exit_row == t_map.p_row)
 			exit_checker(mlx);
 	}
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map_info.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fsoymaz <fsoymaz@student.42.fr>            +#+  +:+       +#+        */
+/*   By: fatihsoymaz <fatihsoymaz@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/05 23:27:30 by fatihsoymaz       #+#    #+#             */
-/*   Updated: 2023/03/14 14:17:47 by fsoymaz          ###   ########.fr       */
+/*   Updated: 2023/03/15 12:25:48 by fatihsoymaz      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ void	map_lines(char **argv)
 	{
 		ft_putstr("mapyok\n");
 		free(line);
-		exit(1);
+		exit(0);
 	}
 	while (line)
 	{
@@ -38,7 +38,7 @@ void	map_lines(char **argv)
 	close(fd);
 }
 
-void	gate_finder(char **map)
+void	exit_finder(char **map)
 {
 	int	i;
 	int	j;
@@ -51,8 +51,8 @@ void	gate_finder(char **map)
 		{
 			if (map[i][j] == 'E')
 			{
-				t_map.gate_col = j;
-				t_map.gate_row = i;
+				t_map.exit_col = j;
+				t_map.exit_row = i;
 				return ;
 			}
 			j++;
@@ -79,7 +79,7 @@ void	readmap(char **argv)
 		t_map.map[i++] = str;
 	}
 	t_map.map[i] = NULL;
-	gate_finder(t_map.map);
+	exit_finder(t_map.map);
 	close(fd);
 	t_map.w_cnt = ft_strlen(t_map.map[0]) - 1;
 }

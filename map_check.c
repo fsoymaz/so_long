@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map_check.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fsoymaz <fsoymaz@student.42.fr>            +#+  +:+       +#+        */
+/*   By: fatihsoymaz <fatihsoymaz@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/07 21:58:12 by fsoymaz           #+#    #+#             */
-/*   Updated: 2023/03/14 13:14:57 by fsoymaz          ###   ########.fr       */
+/*   Updated: 2023/03/15 11:54:26 by fatihsoymaz      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ void	check_arg(char **argv)
 	{
 		free(t_map.map);
 		ft_putstr("number of arguments is not correct\n");
-		exit(1);
+		exit(0);
 	}
 	wall_row_check();
 }
@@ -74,7 +74,7 @@ void	wall_check(char **argv)
 			|| t_map.map[0][j] != '1' || t_map.map[t_map.l_cnt - 1][j] != '1')
 			{
 				ft_putstr("the walls are not complete\n");
-				exit(1);
+				exit(0);
 			}
 		}
 	}
@@ -89,19 +89,19 @@ int	ber_check(char **argv)
 	if (str == NULL)
 	{
 		ft_putstr("ERROR: file is not find\n");
-		exit(1);
+		exit(0);
 	}
 	else if (((ft_strcmp(str, ".ber") != 0) && ft_strlen(str) != 4))
 	{
 		ft_putstr("ERROR:filename length not four or not .ber \n");
-		exit(1);
+		exit(0);
 	}
 	a = ft_strlen(argv[1]);
 	if (argv[1][0] == '.' || (argv[1][a - 4] == '.' && (argv[1][a - 5] == '.'
 		|| argv[1][a - 5] == '/')))
 	{
 		ft_putstr("ERROR: filename is incorrect\n");
-		exit(1);
+		exit(0);
 	}
 	return (1);
 }

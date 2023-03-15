@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fsoymaz <fsoymaz@student.42.fr>            +#+  +:+       +#+        */
+/*   By: fatihsoymaz <fatihsoymaz@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/17 18:04:40 by fsoymaz           #+#    #+#             */
-/*   Updated: 2023/03/14 14:15:42 by fsoymaz          ###   ########.fr       */
+/*   Updated: 2023/03/15 12:26:00 by fatihsoymaz      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,6 @@ struct s_map
 	int		exit_count;
 	int		exit_col;
 	int		exit_row;
-	int		gate_col;
-	int		gate_row;
 	int		current_coin;
 }	t_map;
 
@@ -56,14 +54,10 @@ typedef struct s_mlx
 	char	*f;
 	char	*m;
 
-	int		a;
-	int		b;
-
 	void	*win;
 	void	*init;
 }	t_mlx;
 
-int		close_with(void);
 void	map_lines(char **argv);
 void	readmap(char **argv);
 void	map_info(char **argv);
@@ -72,21 +66,16 @@ void	check_map_chars(char c);
 void	wall_check(char **argv);
 void	wall_row_check(void);
 int		ber_check(char **argv);
-char	*ft_strchr(const char *s, int c);
 char	*ft_strdup(const char *s1);
 int		path_checker(void);
-char	**map_duplicator(void);
-void	path_recursive(char **map, int c, int r);
 void	xpm_to_img(t_mlx *map);
 void	mlx_control(t_mlx *mlx);
 void	put_img(t_mlx *mlx, char **map);
 void	img_printer(t_mlx *mlx, char c);
 void	ft_putstr(char *str);
 void	ft_putnbr(int n);
-void	move_left(char **map, int *step);
 void	exit_checker(t_mlx *mlx);
 char	*ft_itoa(int n);
-void	write_s(t_mlx *mlx, int step);
 void	map_free(char **map);
 int		ft_strcmp(const char *s1, const char *s2);
 char	*ft_strrchr(const char *s, int c);

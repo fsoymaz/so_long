@@ -1,5 +1,5 @@
 NAME = so_long
-SRCS = map_info.c map_check.c utils.c main.c valid_path_check.c mlx_controler.c ft_itoa.c \
+SRCS = map_info.c map_check.c utils.c utils2.c main.c valid_path_check.c mlx_controler.c \
 		mlx_controler2.c ./SRC/get_next_line/libftgnl.a
 OBJS = $(SRCS:.c=.o)
 LIBFT = libft.a
