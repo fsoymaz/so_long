@@ -6,7 +6,7 @@
 /*   By: fatihsoymaz <fatihsoymaz@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/17 18:04:40 by fsoymaz           #+#    #+#             */
-/*   Updated: 2023/03/15 12:26:00 by fatihsoymaz      ###   ########.fr       */
+/*   Updated: 2023/03/24 21:58:39 by fatihsoymaz      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 # include "./SRC/get_next_line/get_next_line.h"
 # include <fcntl.h>
 # include "./SRC/mlx/mlx.h"
-# include <stdio.h>
 
 struct s_map
 {
@@ -79,4 +78,5 @@ char	*ft_itoa(int n);
 void	map_free(char **map);
 int		ft_strcmp(const char *s1, const char *s2);
 char	*ft_strrchr(const char *s, int c);
+int		ft_exit(int key, t_mlx *mlx);
 #endif

@@ -6,7 +6,7 @@
 /*   By: fatihsoymaz <fatihsoymaz@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/06 17:16:30 by fsoymaz           #+#    #+#             */
-/*   Updated: 2023/03/15 12:05:34 by fatihsoymaz      ###   ########.fr       */
+/*   Updated: 2023/03/24 22:01:48 by fatihsoymaz      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,4 +74,11 @@ void	ft_putnbr(int n)
 	}
 	else
 		ft_putchar(n + 48);
+}
+
+int	ft_exit(int key, t_mlx *mlx)
+{
+	(void)mlx;
+	(void)key;
+	exit(0);
 }

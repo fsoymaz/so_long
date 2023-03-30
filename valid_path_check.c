@@ -6,7 +6,7 @@
 /*   By: fatihsoymaz <fatihsoymaz@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/11 01:38:03 by fsoymaz           #+#    #+#             */
-/*   Updated: 2023/03/15 12:16:56 by fatihsoymaz      ###   ########.fr       */
+/*   Updated: 2023/03/30 18:21:05 by fatihsoymaz      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,5 +67,5 @@ int	path_checker(void)
 		}
 	}
 	map_free(map);
-	return (1);
+	return (0);
 }

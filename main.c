@@ -6,12 +6,11 @@
 /*   By: fatihsoymaz <fatihsoymaz@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/09 16:56:24 by fsoymaz           #+#    #+#             */
-/*   Updated: 2023/03/15 12:19:41 by fatihsoymaz      ###   ########.fr       */
+/*   Updated: 2023/03/30 02:19:17 by fatihsoymaz      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
-#include <stdio.h>
 
 int	main(int argc, char **argv)
 {
@@ -26,7 +25,7 @@ int	main(int argc, char **argv)
 	check_arg(argv);
 	if (t_map.l_cnt > 128 || t_map.w_cnt > 128)
 	{
-		ft_putstr("to_long_map\n");
+		ft_putstr("too_long_map\n");
 		exit(1);
 	}
 	path_checker();

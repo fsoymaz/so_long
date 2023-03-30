@@ -6,7 +6,7 @@
 /*   By: fatihsoymaz <fatihsoymaz@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/11 05:01:56 by fsoymaz           #+#    #+#             */
-/*   Updated: 2023/03/15 12:29:03 by fatihsoymaz      ###   ########.fr       */
+/*   Updated: 2023/03/30 17:49:56 by fatihsoymaz      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,11 +31,20 @@ void	move(char **map, int *step, int dx, int dy)
 void	write_s(t_mlx *mlx, int step)
 {
 	char	*v;
+	char	*a;
+	char	*b;
 
 	v = ft_itoa(step);
-	mlx_string_put(mlx->init, mlx->win, 5, 20, 0xffff99, "step: ");
-	mlx_string_put(mlx->init, mlx->win, 45, 20, 0xffff99, v);
+	a = ft_itoa(t_map.current_coin);
+	b = ft_itoa(t_map.coin_count);
+	mlx_string_put(mlx->init, mlx->win, 5, 20, 0xf5fffa, "step: ");
+	mlx_string_put(mlx->init, mlx->win, 5, 40, 0xf5fffa, "coin count: ");
+	mlx_string_put(mlx->init, mlx->win, 100, 40, 0x000080, b);
+	mlx_string_put(mlx->init, mlx->win, 45, 20, 0x97ffff, v);
+	mlx_string_put(mlx->init, mlx->win, 83, 40, 0x97ffff, a);
 	free(v);
+	free(a);
+	free(b);
 }
 
 int	ft_movement(int key, t_mlx *mlx)
@@ -70,5 +79,6 @@ void	mlx_control(t_mlx *mlx)
 	ft_putstr("step:0\n");
 	write_s(mlx, 0);
 	mlx_hook(mlx->win, 2, 1L << 0, &ft_movement, mlx);
+	mlx_hook(mlx->win, 17, 0, &ft_exit, mlx);
 	mlx_loop(mlx->init);
 }

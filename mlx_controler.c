@@ -6,7 +6,7 @@
 /*   By: fatihsoymaz <fatihsoymaz@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/11 03:07:52 by fsoymaz           #+#    #+#             */
-/*   Updated: 2023/03/15 12:26:43 by fatihsoymaz      ###   ########.fr       */
+/*   Updated: 2023/03/30 18:13:52 by fatihsoymaz      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,6 +79,6 @@ void	put_img(t_mlx *mlx, char **map)
 			mlx->x1 += 64;
 		}
 		mlx->y1 += 64;
-		i += 1;
+		i++;
 	}
 }
