@@ -6,7 +6,7 @@
 /*   By: fatihsoymaz <fatihsoymaz@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/07 21:58:12 by fsoymaz           #+#    #+#             */
-/*   Updated: 2023/03/31 03:43:27 by fatihsoymaz      ###   ########.fr       */
+/*   Updated: 2023/03/31 05:36:35 by fatihsoymaz      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,6 @@ void	check_arg(char **argv)
 		ft_putstr("error: number of arguments is not correct\n");
 		exit(1);
 	}
-	wall_row_check();
 }
 
 void	wall_row_check(void)
@@ -44,7 +43,6 @@ void	wall_row_check(void)
 		i = ft_strlen(t_map.map[a]) - 1;
 		if (i != t_map.w_cnt)
 		{
-			free(t_map.map);
 			ft_putstr("error: lines are not equal in length\n");
 			exit(1);
 		}
@@ -64,6 +62,7 @@ void	wall_check(char **argv)
 	int	j;
 
 	map_lines(argv);
+	wall_row_check();
 	i = -1;
 	while (t_map.map[++i])
 	{

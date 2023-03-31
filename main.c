@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fsoymaz <fsoymaz@student.42.fr>            +#+  +:+       +#+        */
+/*   By: fatihsoymaz <fatihsoymaz@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/09 16:56:24 by fsoymaz           #+#    #+#             */
-/*   Updated: 2023/03/31 02:19:13 by fsoymaz          ###   ########.fr       */
+/*   Updated: 2023/03/31 06:02:31 by fatihsoymaz      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,5 +32,5 @@ int	main(int argc, char **argv)
 	mlx = malloc(sizeof(t_mlx));
 	if (!mlx)
 		return (0);
-	mlx_control(mlx);
+	related_to_mlx(mlx);
 }

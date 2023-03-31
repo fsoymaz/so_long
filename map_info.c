@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map_info.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fsoymaz <fsoymaz@student.42.fr>            +#+  +:+       +#+        */
+/*   By: fatihsoymaz <fatihsoymaz@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/05 23:27:30 by fatihsoymaz       #+#    #+#             */
-/*   Updated: 2023/03/31 02:17:58 by fsoymaz          ###   ########.fr       */
+/*   Updated: 2023/03/31 05:39:16 by fatihsoymaz      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,6 @@ void	map_lines(char **argv)
 	if (line == NULL)
 	{
 		ft_putstr("error: there is no map\n");
-		free(line);
 		exit(1);
 	}
 	while (line)

@@ -6,7 +6,7 @@
 /*   By: fatihsoymaz <fatihsoymaz@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/11 05:01:56 by fsoymaz           #+#    #+#             */
-/*   Updated: 2023/03/30 17:49:56 by fatihsoymaz      ###   ########.fr       */
+/*   Updated: 2023/03/31 06:01:10 by fatihsoymaz      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,12 +60,12 @@ int	ft_movement(int key, t_mlx *mlx)
 		t_map.map[t_map.exit_row][t_map.exit_col] = 'E';
 	if (t_map.exit_col == t_map.p_col && t_map.exit_row == t_map.p_row)
 		exit_checker(mlx);
-	put_img(mlx, t_map.map);
+	put_picture(mlx, t_map.map);
 	write_s(mlx, step);
 	return (0);
 }
 
-void	mlx_control(t_mlx *mlx)
+void	related_to_mlx(t_mlx *mlx)
 {
 	int	l;
 	int	c;
@@ -75,10 +75,10 @@ void	mlx_control(t_mlx *mlx)
 	mlx->init = mlx_init();
 	xpm_to_img(mlx);
 	mlx->win = mlx_new_window(mlx->init, c, l, "so_long");
-	put_img(mlx, t_map.map);
+	put_picture(mlx, t_map.map);
 	ft_putstr("step:0\n");
 	write_s(mlx, 0);
 	mlx_hook(mlx->win, 2, 1L << 0, &ft_movement, mlx);
-	mlx_hook(mlx->win, 17, 0, &ft_exit, mlx);
+	mlx_hook(mlx->win, 17, 1L << 0, &ft_exit, mlx);
 	mlx_loop(mlx->init);
 }

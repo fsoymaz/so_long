@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   mlx_controler.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fsoymaz <fsoymaz@student.42.fr>            +#+  +:+       +#+        */
+/*   By: fatihsoymaz <fatihsoymaz@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/11 03:07:52 by fsoymaz           #+#    #+#             */
-/*   Updated: 2023/03/31 02:17:31 by fsoymaz          ###   ########.fr       */
+/*   Updated: 2023/03/31 05:57:20 by fatihsoymaz      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ void	xpm_to_img(t_mlx *map)
 	}
 }
 
-void	img_printer(t_mlx *mlx, char c)
+void	print_picture(t_mlx *mlx, char c)
 {
 	mlx_put_image_to_window(mlx->init, mlx->win, mlx->f, mlx->x1, mlx->y1);
 	if (c == '1')
@@ -61,7 +61,7 @@ void	img_printer(t_mlx *mlx, char c)
 	}
 }
 
-void	put_img(t_mlx *mlx, char **map)
+void	put_picture(t_mlx *mlx, char **map)
 {
 	int	i;
 	int	j;
@@ -74,7 +74,7 @@ void	put_img(t_mlx *mlx, char **map)
 		mlx->x1 = 0;
 		while (map[i][j] != '\0')
 		{
-			img_printer(mlx, map[i][j]);
+			print_picture(mlx, map[i][j]);
 			j++;
 			mlx->x1 += 64;
 		}

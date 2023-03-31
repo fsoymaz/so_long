@@ -6,7 +6,7 @@
 /*   By: fatihsoymaz <fatihsoymaz@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/17 18:04:40 by fsoymaz           #+#    #+#             */
-/*   Updated: 2023/03/24 21:58:39 by fatihsoymaz      ###   ########.fr       */
+/*   Updated: 2023/03/31 06:01:59 by fatihsoymaz      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,9 +68,9 @@ int		ber_check(char **argv);
 char	*ft_strdup(const char *s1);
 int		path_checker(void);
 void	xpm_to_img(t_mlx *map);
-void	mlx_control(t_mlx *mlx);
-void	put_img(t_mlx *mlx, char **map);
-void	img_printer(t_mlx *mlx, char c);
+void	related_to_mlx(t_mlx *mlx);
+void	put_picture(t_mlx *mlx, char **map);
+void	print_picture(t_mlx *mlx, char c);
 void	ft_putstr(char *str);
 void	ft_putnbr(int n);
 void	exit_checker(t_mlx *mlx);
