@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map_check.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fsoymaz <fsoymaz@student.42.fr>            +#+  +:+       +#+        */
+/*   By: fatihsoymaz <fatihsoymaz@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/07 21:58:12 by fsoymaz           #+#    #+#             */
-/*   Updated: 2023/03/31 02:19:01 by fsoymaz          ###   ########.fr       */
+/*   Updated: 2023/03/31 03:43:27 by fatihsoymaz      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,6 +83,7 @@ void	wall_check(char **argv)
 int	ber_check(char **argv)
 {
 	char	*str;
+
 	str = ft_strrchr(argv[1], '.');
 	if (str == NULL)
 	{
@@ -94,7 +95,7 @@ int	ber_check(char **argv)
 		ft_putstr("error: this is a hidden ber file\n");
 		exit(1);
 	}
-	else if (((ft_strcmp(str, ".ber") != 0) || ft_strlen(str) < 4))
+	else if ((ft_strcmp(str, ".ber") != 0))
 	{
 		ft_putstr("error:filename length not four or not .ber \n");
 		exit(1);
