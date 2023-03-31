@@ -6,7 +6,7 @@
 /*   By: fatihsoymaz <fatihsoymaz@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/07 21:58:12 by fsoymaz           #+#    #+#             */
-/*   Updated: 2023/03/31 05:36:35 by fatihsoymaz      ###   ########.fr       */
+/*   Updated: 2023/03/31 17:21:39 by fatihsoymaz      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,7 +96,7 @@ int	ber_check(char **argv)
 	}
 	else if ((ft_strcmp(str, ".ber") != 0))
 	{
-		ft_putstr("error:filename length not four or not .ber \n");
+		ft_putstr("error:filename not .ber \n");
 		exit(1);
 	}
 	return (0);
