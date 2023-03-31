@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fatihsoymaz <fatihsoymaz@student.42.fr>    +#+  +:+       +#+        */
+/*   By: fsoymaz <fsoymaz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/09 16:56:24 by fsoymaz           #+#    #+#             */
-/*   Updated: 2023/03/30 02:19:17 by fatihsoymaz      ###   ########.fr       */
+/*   Updated: 2023/03/31 02:19:13 by fsoymaz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,14 +18,14 @@ int	main(int argc, char **argv)
 
 	if (argc != 2)
 	{
-		ft_putstr("ERROR\n");
+		ft_putstr("error: arguman count is not two\n");
 		exit(1);
 	}
 	ber_check(argv);
 	check_arg(argv);
 	if (t_map.l_cnt > 128 || t_map.w_cnt > 128)
 	{
-		ft_putstr("too_long_map\n");
+		ft_putstr("error: too_long_map\n");
 		exit(1);
 	}
 	path_checker();

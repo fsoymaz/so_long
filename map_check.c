@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map_check.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fatihsoymaz <fatihsoymaz@student.42.fr>    +#+  +:+       +#+        */
+/*   By: fsoymaz <fsoymaz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/07 21:58:12 by fsoymaz           #+#    #+#             */
-/*   Updated: 2023/03/15 11:54:26 by fatihsoymaz      ###   ########.fr       */
+/*   Updated: 2023/03/31 02:19:01 by fsoymaz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,8 @@ void	check_map_chars(char c)
 {
 	if (c != 'C' && c != 'P' && c != 'E' && c != '0' && c != '1' && c != '\n')
 	{
-		ft_putstr("Invalid character in map.\n");
-		exit(0);
+		ft_putstr("error: Invalid character in map.\n");
+		exit(1);
 	}
 }
 
@@ -27,8 +27,8 @@ void	check_arg(char **argv)
 	if (t_map.chk_player != 1 || t_map.exit_count != 1 || t_map.coin_count == 0)
 	{
 		free(t_map.map);
-		ft_putstr("number of arguments is not correct\n");
-		exit(0);
+		ft_putstr("error: number of arguments is not correct\n");
+		exit(1);
 	}
 	wall_row_check();
 }
@@ -45,16 +45,16 @@ void	wall_row_check(void)
 		if (i != t_map.w_cnt)
 		{
 			free(t_map.map);
-			ft_putstr("lines are not equal in length\n");
-			exit(0);
+			ft_putstr("error: lines are not equal in length\n");
+			exit(1);
 		}
 		a++;
 	}
 	i = ft_strlen(t_map.map[a]);
 	if (i != t_map.w_cnt)
 	{
-		ft_putstr("lines are not equal in length\n");
-		exit(0);
+		ft_putstr("error: lines are not equal in length\n");
+		exit(1);
 	}
 }
 
@@ -73,8 +73,8 @@ void	wall_check(char **argv)
 			if (t_map.map[i][0] != '1' || t_map.map[i][t_map.w_cnt - 1] != '1' \
 			|| t_map.map[0][j] != '1' || t_map.map[t_map.l_cnt - 1][j] != '1')
 			{
-				ft_putstr("the walls are not complete\n");
-				exit(0);
+				ft_putstr("error: the walls are not complete\n");
+				exit(1);
 			}
 		}
 	}
@@ -83,25 +83,21 @@ void	wall_check(char **argv)
 int	ber_check(char **argv)
 {
 	char	*str;
-	int		a;
-
 	str = ft_strrchr(argv[1], '.');
 	if (str == NULL)
 	{
-		ft_putstr("ERROR: file is not find\n");
-		exit(0);
+		ft_putstr("error: file is not find\n");
+		exit(1);
 	}
-	else if (((ft_strcmp(str, ".ber") != 0) && ft_strlen(str) != 4))
+	if (argv[1][5] == '.' && argv[1][6] != '.')
 	{
-		ft_putstr("ERROR:filename length not four or not .ber \n");
-		exit(0);
+		ft_putstr("error: this is a hidden ber file\n");
+		exit(1);
 	}
-	a = ft_strlen(argv[1]);
-	if (argv[1][0] == '.' || (argv[1][a - 4] == '.' && (argv[1][a - 5] == '.'
-		|| argv[1][a - 5] == '/')))
+	else if (((ft_strcmp(str, ".ber") != 0) || ft_strlen(str) < 4))
 	{
-		ft_putstr("ERROR: filename is incorrect\n");
-		exit(0);
+		ft_putstr("error:filename length not four or not .ber \n");
+		exit(1);
 	}
-	return (1);
+	return (0);
 }

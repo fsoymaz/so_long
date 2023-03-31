@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map_info.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fatihsoymaz <fatihsoymaz@student.42.fr>    +#+  +:+       +#+        */
+/*   By: fsoymaz <fsoymaz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/05 23:27:30 by fatihsoymaz       #+#    #+#             */
-/*   Updated: 2023/03/22 14:36:39 by fatihsoymaz      ###   ########.fr       */
+/*   Updated: 2023/03/31 02:17:58 by fsoymaz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,9 +23,9 @@ void	map_lines(char **argv)
 	line = get_next_line(fd);
 	if (line == NULL)
 	{
-		ft_putstr("mapyok\n");
+		ft_putstr("error: there is no map\n");
 		free(line);
-		exit(0);
+		exit(1);
 	}
 	while (line)
 	{
